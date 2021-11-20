@@ -1,7 +1,8 @@
-import React from 'react'
-import { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from './api';
+import React, {useState} from 'react'
+import api, { TOKEN_POST, TOKEN_VALIDATE_POST, USER_GET } from './api';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
+// import useForm from './Hooks/useForm';
 
 export const UserContext = React.createContext();
 
@@ -24,73 +25,55 @@ export const UserStorage = ({children}) => {
 
     
     async function getUser(token){
-        // const {url, options} = USER_GET(token)
-        // const response = await fetch(url, options)
-        // const json = await response.json()
-        // setData(json)
-        // setLogin(true)
+       const user = await api.get('/auth/usuario', token)
+        const json = await user.json()
+        setData(json)
+        setLogin(true)
     }
 
     async function userLogin(email, password){
-        try {
-            // setError(null)
-            // setLoading(true)
-            console.log(email)
-            // console.log(password)
 
-            const req = TOKEN_POST({email, password})
-            req.then( res=>{
-                const {data} = res
-                // console.log(data )
-                if(data){
-                    localStorage.getItem('token')
-                    navigate('/conta')
-console.log(data)
-
-                    // getUser(data)
-                }
+        try{
+            setError(null)
+            setLoading(true)
+            const response = await api.post('/auth/authenticate', {
+                email,
+                password
+            }).then(res => {
+                navigate('/conta')
             })
-            // console.log(req.)
-            // const res = await req
-            // const token = localStorage.getItem('token')
-            // console.log(res.statusText)
-            // if(res.statusText !== "OK") throw new Error(`Error: ${res.statusText}`)
-            // let token = res.data
-            // const token = localStorage.getItem('token')
-            // await getUser(token)
-            // navigate('/conta')
-            // console.log(res.data)
+            await localStorage.setItem('token', response.data.token)
+            const token = response.data
+            console.log(token)
+            await getUser(token)
+
             
-            
-        } catch (err){
-            setError(err.message)
-            setLogin(false)
-        } finally {
-            setLoading(false)
+        } catch (err) {
+
         }
         
     }
 
     React.useEffect(() => {
         async function autoLogin() {
-            // const token = localStorage.get('token')
-            // if(token){
-            //     try{
-            //         setError(null)
-            //         setLoading(true)
-            //         const req = TOKEN_VALIDATE_POST(token)
-            //         const res = await req
-            //         if(res.statusText !== "OK") throw new Error('token invalido')
-            //         await getUser(token)
-            //     } catch (err) {
-            //         userLogout()
-            //     } finally {
-            //         setLoading(false)
-            //     }
-                
-            // }   else {
-            //     setLogin(false);
-            //   }
+                const token = window.localStorage.getItem('token')
+            if(token){
+                try {
+                    setError(null)
+                    setLoading(true)
+                    const response = await api.post('/auth/authenticate', token)
+                    console.log(response)
+
+                    if(response.statusText !== "OK") throw new Error('Token invalido')
+                    await getUser(token)
+                } catch(err){
+                    userLogout()
+                } finally {
+                    setLoading(false)
+                }
+                } else {
+                setLogin(false);
+              }
         }
         autoLogin()
     }, [userLogout])

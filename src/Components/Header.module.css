@@ -18,17 +18,30 @@
   padding: 0.5rem 0;
 }
 
-.login {
+.user {
   color: #333;
   display: flex;
   align-items: center;
+  margin-right: 2rem;
 }
 
-.login::after {
+.user::after {
   content: "";
   display: block;
   width: 14px;
   height: 17px;
   background: url("../Assets/usuario.svg") no-repeat center center;
   margin-left: 0.5rem;
+}
+.area {
+  color: #333;
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+}
+.conosco {
+  color: #333;
+  display: flex;
+  align-items: center;
+  /* margin-right: 2rem; */
 }

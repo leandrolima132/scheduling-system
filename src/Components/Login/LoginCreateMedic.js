@@ -1,5 +1,5 @@
 import React from 'react'
-import { MEDIC_POST } from '../../api'
+import api from '../../api'
 import useFetch from '../../Hooks/useFetch'
 import useForm from '../../Hooks/useForm'
 import { UserContext } from '../../UserContext'
@@ -18,23 +18,26 @@ const LoginCreateMedic = () => {
     const password = useForm()
 
     const { userLogin } = React.useContext(UserContext)
-    const { loagind, error, request } = useFetch()
+    const { loagind, error } = useFetch()
 
     async function handleSubmit(e){
         e.preventDefault()
-        const {url, options} = MEDIC_POST({
-            name: name.value,
-            telefone: telefone.value,
-            sexo: sexo.value,
-            naturalidade: naturalidade.value,
-            dataNascimento: dataNascimento.value,
-            crm: crm.value,
-            email: email.value,
-            password:password.value,
-        })
-        const { response } = await request(url, options)
-        if(response.ok) userLogin(crm.value, password.value)
-        console.log(response)
+       api.post('/auth/medic', {
+        name: name.value,
+        telefone: telefone.value,
+        sexo: sexo.value,
+        naturalidade: naturalidade.value,
+        dataNascimento: dataNascimento.value,
+        crm: crm.value,
+        email: email.value,
+        password:password.value,
+       }).then(res => {
+        if(res.statusText === 'OK'){
+            userLogin(email.value, password.value)
+            // navigate('/login')
+        }
+    })
+     
 
     }
 
