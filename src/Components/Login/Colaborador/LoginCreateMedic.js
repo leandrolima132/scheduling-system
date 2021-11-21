@@ -1,13 +1,14 @@
 import React from 'react'
-import api from '../../api'
-import useFetch from '../../Hooks/useFetch'
-import useForm from '../../Hooks/useForm'
-import { UserContext } from '../../UserContext'
-import Button from '../Forms/Button'
-import Input from '../Forms/Input'
-import Error from '../Helper/Error'
+import { useNavigate } from 'react-router'
+import api from '../../../api'
+import useForm from '../../../Hooks/useForm'
+import { UserContext } from '../../../UserContext'
+import Button from '../../Forms/Button'
+import Input from '../../Forms/Input'
+import styles from './Login.module.css'
 
 const LoginCreateMedic = () => {
+    const navigate = useNavigate()
     const name = useForm()
     const telefone = useForm()
     const sexo = useForm()
@@ -18,7 +19,6 @@ const LoginCreateMedic = () => {
     const password = useForm()
 
     const { userLogin } = React.useContext(UserContext)
-    const { loagind, error } = useFetch()
 
     async function handleSubmit(e){
         e.preventDefault()
@@ -32,17 +32,17 @@ const LoginCreateMedic = () => {
         email: email.value,
         password:password.value,
        }).then(res => {
-        if(res.statusText === 'OK'){
             userLogin(email.value, password.value)
-            // navigate('/login')
-        }
+         navigate('/area')
     })
      
 
     }
 
     return (
-        <section className='animeLetf'>
+        <div className={styles.register}>
+            <div className={styles.forms}>
+            <section className='animeLetf'>
             <h1 className='title'>Cadastro do Colaborador</h1>
             <form onSubmit={handleSubmit}>
             <Input label='Nome' type='text' name='name' {...name}/>
@@ -53,10 +53,12 @@ const LoginCreateMedic = () => {
             <Input label='Número do CRM' type='text' name='crm' {...crm}/>
             <Input label='Email' type='text' name='email' {...email}/>
             <Input label='Senha' type='password' name='senha' {...password}/>
-            {loagind ? (<Button children='Cadastrando...'/>) : <Button children='Cadastrar'/>}
-            <Error error={error}/>
+             <Button children='Cadastrar'/>
+          
             </form>
         </section>
+            </div>
+            </div>
     )
 }
 

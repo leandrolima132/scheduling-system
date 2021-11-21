@@ -29,12 +29,12 @@
 
 .nav a:global(.active) {
   background: white;
-  box-shadow: 0 0 0 3px #fea;
-  border-color: #fb1;
+  box-shadow: 0 0 0 3px #40e0d0;
+  border-color: #3ab7aa;
 }
 
 .nav a:global(.active) svg > * {
-  fill: #fb1;
+  fill: #40e0d0;
 }
 
 .mobileButton {

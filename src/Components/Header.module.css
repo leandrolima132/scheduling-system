@@ -15,7 +15,7 @@
 }
 
 .logo {
-  padding: 0.5rem 0;
+  /* padding: 0.1rem 0; */
 }
 
 .user {
@@ -37,11 +37,10 @@
   color: #333;
   display: flex;
   align-items: center;
-  margin-right: 2rem;
+  margin-right: 2vw;
 }
 .conosco {
   color: #333;
   display: flex;
   align-items: center;
-  /* margin-right: 2rem; */
 }
