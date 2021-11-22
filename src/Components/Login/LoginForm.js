@@ -5,39 +5,20 @@ import Button from '../Forms/Button'
 import Input from '../Forms/Input'
 import styles from './LoginForm.module.css'
 import stylesBtn from '../Forms/Button.module.css'
-import { useNavigate } from 'react-router-dom'
-// import api from '../../api'
 import { UserContext } from '../../UserContext'
+import Error from '../Helper/Error'
 
 
 const LoginForm = () => {
-    // const navigate = useNavigate(); 
     const email = useForm()
     const password = useForm()
 
-    const { userLogin } = React.useContext(UserContext)
+    const { userLogin, error, loading } = React.useContext(UserContext)
     async function handleSubmit(e) {
         e.preventDefault()
 
         if(email.validate() && password.validate()){
             userLogin(email.value, password.value)
-
-        //     api.post('/auth/authenticate', {
-        //         email: name.value,
-        //         password: password.value
-        //     }).then(res => {
-        //         const data = res.data
-        //         console.log(data )
-                   
-
-        //         if(data){
-        //             localStorage.setItem('token', data)
-
-        //             navigate('/conta')
-                    
-        //         }
-        //     })
-           
         }
     }
 
@@ -48,7 +29,7 @@ const LoginForm = () => {
                 <Input 
                 label='Usuário' 
                 type='text' 
-                name='username' 
+                name='email' 
                 {...email}
                 />
                 <Input 
@@ -57,11 +38,14 @@ const LoginForm = () => {
                 name='password' 
                 {...password}
                 />
-                    <Button children='Entrar'/>
+                  {loading ? (
+          <Button disabled>Carregando...</Button>
+        ) : (
+          <Button>Entrar</Button>
+        )}
+         <Error error={error && 'Dados incorretos.'} />
             </form>
             <div>
-                <Link className={styles.colaborador} to='/login/colaborador'>Área do colaborador</Link>
-                <Link className={styles.colaborador} to='/login/colaborador'>Trabalhe conosco</Link>
 
                     <div className={styles.cadastro}>
                         <h2 className={styles.subtitle}>Cadastre-se</h2>

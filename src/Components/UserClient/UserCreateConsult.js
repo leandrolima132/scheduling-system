@@ -1,38 +1,37 @@
-import axios from 'axios'
 import React from 'react'
+import api from '../../api'
 import useForm from '../../Hooks/useForm'
+import { UserContext } from '../../UserContext'
 import Button from '../Forms/Button'
 import Input from '../Forms/Input'
 import TextArea from '../Forms/TextArea'
 
 const UserPhotoPost = () => {
-    // const {dado, setDado} = React.useState('')
     const data = useForm()
     const retorno = useForm()
     const medico = useForm()
     const descricao = useForm()
 
-    function handleSubmit(event) {
+    const { dados } = React.useContext(UserContext)
+
+    
+    
+    async function handleSubmit(event) {
     event.preventDefault();
+    // const formData = new FormData()
+    // formData.append('data', data.value)
+    // formData.append('retorno', retorno.value)
+    // formData.append('medico', medico.value)
+    // formData.append('descricao', descricao.value)
 
-    const formData = new FormData()
-    formData.append('data', data.value)
-    formData.append('retorno', retorno.value)
-    formData.append('medico', medico.value)
-    formData.append('descricao', descricao.value)
-
-   
-    axios.post(`http://localhost:3000/registerAgendamento/`,{
-        Data: data.value,
-        Retorno: retorno.value,
-        Medico: medico.value,
-        Descricao: descricao.value
+     await api.post(`/auth/registerAgendamento/${dados.email}`, {
+            Data:data.value,
+            Retorno:retorno.value,
+            Descricao:descricao.value,
+            Medico:medico.value
     }).then(res=> {
-        this.setDado(res)
-        // console.log(dado)
-    })
- 
-
+        console.log(res.data)
+        })
 
     }
 

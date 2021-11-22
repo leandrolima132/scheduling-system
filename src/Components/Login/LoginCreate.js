@@ -2,12 +2,10 @@ import React from 'react'
 import useForm from '../../Hooks/useForm'
 import Button from '../Forms/Button'
 import Input from '../Forms/Input'
-import { useNavigate } from 'react-router-dom'
 import api from '../../api'
 import { UserContext } from '../../UserContext'
 
 const LoginCreate = () => {
-    const navigate = useNavigate(); 
     const name = useForm()
     const email = useForm()
     const cpf = useForm()
@@ -15,7 +13,6 @@ const LoginCreate = () => {
     const password = useForm()
 
   const { userLogin } = React.useContext(UserContext);
-
 
     async function handleSubmit(e) {
         e.preventDefault()
@@ -27,10 +24,7 @@ const LoginCreate = () => {
             telefone: telefone.value,
             password: password.value,
         }).then(res => {
-                    if(res.statusText === 'OK'){
                         userLogin(email.value, password.value)
-                        navigate('/login')
-                    }
                 })
              
             }
@@ -46,8 +40,6 @@ const LoginCreate = () => {
                 <Input label='Senha' type='password' name='password' {...password}/>
 
                 <Button children='Cadastrar'/>
-                {/* {loagind ? (<Button children='Cadastrando...'/>) : <Button children='Cadastrar'/>} */}
-                {/* <Error error={error}/> */}
             </form>
 
         </section>
