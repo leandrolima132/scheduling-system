@@ -1,0 +1,83 @@
+.capa {
+  width: 100%;
+}
+
+h2 {
+  margin-top: 20px;
+  width: 800px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 41px;
+  color: #ffffff;
+}
+
+p {
+  height: 66px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.box {
+  width: 80%;
+  padding-right: 50px;
+  padding-left: 50px;
+  margin-left: auto;
+  background-color: #06cecf;
+  margin-bottom: 70px;
+}
+
+body {
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.quadrado {
+  background: red;
+  width: 50px;
+  height: 50px;
+}
+
+.container-md {
+  width: 80%;
+  padding-right: 50px;
+  padding-left: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-10 {
+  margin-top: 10px;
+}
+
+.grid-imagens {
+  margin-left: 15px;
+  border-bottom: 1px solid #70707033 !important;
+  margin-top: 10px !important;
+  flex: 3;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.title {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  color: #6B6767;
+}
+
+.image-services {
+  margin-left: 60px;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  margin-bottom: 70px;
+  color: #6B6767;
+  width: 60%;
+}
