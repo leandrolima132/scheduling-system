@@ -1,8 +1,4 @@
-.wrapper {
-  margin-bottom: 1rem;
-}
-
-.textarea {
+.select {
   border: 1px solid #eee;
   display: block;
   width: 100%;
@@ -11,24 +7,18 @@
   border-radius: 0.4rem;
   background: #eee;
   transition: 0.2s;
+  color: #333;
+  margin-bottom: 0.5rem;
 }
-
-.textarea:hover,
-.textarea:focus {
+.select:hover,
+.select:focus {
   outline: none;
   border-color: #3ab7aa;
   background: white;
 }
-
 .label {
   display: block;
   font-size: 1rem;
   line-height: 1;
   padding-bottom: 0.5rem;
-}
-
-.error {
-  color: #f31;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
 }
