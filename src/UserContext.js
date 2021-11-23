@@ -57,7 +57,7 @@ export const UserStorage = ({children}) => {
                 password
             }).then(response => {
                 getUser(response.data.user)
-                navigate('/')
+                navigate('/dasboard')
             })
         } catch (err) {
             setError(err.message);

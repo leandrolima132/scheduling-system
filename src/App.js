@@ -8,6 +8,7 @@ import LoginCreateMedic from './Components/Login/Colaborador/LoginCreateMedic';
 import Login from './Components/Login/Login';
 import User from './Components/UserClient/User';
 import { UserStorage } from './UserContext'
+import Dashboard from './Dashboard/Dashboard';
 
 
 function App() {
@@ -22,7 +23,7 @@ function App() {
               <Route path='area/*' element={<LoginMedic/>}/>
               <Route path='trabalheconosco/*' element={<LoginCreateMedic/>}/>
               <Route path="conta/*" element={<User/>}/>
-              <Route path="dasboard/*" element={<User/>}/>
+              <Route path="dasboard/*" element={<Dashboard/>}/>
             </Routes>
           <Footer/>
         </UserStorage>

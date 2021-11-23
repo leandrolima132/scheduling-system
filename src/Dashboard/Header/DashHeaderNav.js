@@ -1,16 +1,12 @@
 import React from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
-import { UserContext } from '../../UserContext'
-import styles from './UserHeaderNav.module.css'
-import { ReactComponent as MinhasFotos} from '../../Assets/feed.svg'
-import { ReactComponent as Estatisticas} from '../../Assets/estatisticas.svg'
-import { ReactComponent as Adicionar} from '../../Assets/adicionar.svg'
-import { ReactComponent as Sair} from '../../Assets/sair.svg'
+import { useLocation } from 'react-router'
 import useMedia from '../../Hooks/useMedia'
+import { UserContext } from '../../UserContext'
+import { ReactComponent as Sair} from '../../Assets/sair.svg'
+import styles from './HeaderNav.module.css'
 
 
-
-const UserHeaderNav = () => {
+const HeaderDashboard = () => {
     const { userLogout } = React.useContext(UserContext)
     const mobile = useMedia('(max-width:40rem)')
     const [mobileMenu, setMobileMenu] = React.useState(false)
@@ -34,13 +30,13 @@ const UserHeaderNav = () => {
       )}
        
         <nav className={`${mobile ? styles.navMobile : styles.nav} ${mobileMenu && styles.navMobileActive}`}>
-            <NavLink to='/conta' end ><MinhasFotos/>{mobile && 'Minhas Fotos'}</NavLink>
+            {/* <NavLink to='/conta' end ><MinhasFotos/>{mobile && 'Minhas Fotos'}</NavLink>
             <NavLink to='/conta/estatisticas'><Estatisticas/>{mobile && 'Estatisticas'}</NavLink>
-            <NavLink to='/conta/consult'><Adicionar/>{mobile && 'Adicionar'}</NavLink>
+            <NavLink to='/conta/consult'><Adicionar/>{mobile && 'Adicionar'}</NavLink> */}
             <button onClick={userLogout}><Sair/>{mobile && 'Sair'}</button>
         </nav>
         </>
     )
 }
 
-export default UserHeaderNav
+export default HeaderDashboard

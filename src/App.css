@@ -61,8 +61,8 @@ a {
 .title::after {
   content: "";
   display: block;
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  height: 1rem;
   background: #32cfd6;
   position: absolute;
   bottom: 5px;
