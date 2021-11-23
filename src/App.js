@@ -22,7 +22,7 @@ function App() {
               <Route path='area/*' element={<LoginMedic/>}/>
               <Route path='trabalheconosco/*' element={<LoginCreateMedic/>}/>
               <Route path="conta/*" element={<User/>}/>
-              
+              <Route path="dasboard/*" element={<User/>}/>
             </Routes>
           <Footer/>
         </UserStorage>
