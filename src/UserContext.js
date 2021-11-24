@@ -25,9 +25,9 @@ export const UserStorage = ({children}) => {
     )
     
     async function getUser(dados){
-         setDados(dados)
-        console.log(dados)
-         setLogin(true)
+        await setDados(dados)
+        // console.log(dados)
+        await setLogin(true)
     }
 
     async function userLogin(email, password){

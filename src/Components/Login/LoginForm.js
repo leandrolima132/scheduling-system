@@ -16,10 +16,10 @@ const LoginForm = () => {
     const { userLogin, error, loading } = React.useContext(UserContext)
     async function handleSubmit(e) {
         e.preventDefault()
-
         if(email.validate() && password.validate()){
             userLogin(email.value, password.value)
         }
+        localStorage.setItem('email', email.value)
     }
 
     return (
