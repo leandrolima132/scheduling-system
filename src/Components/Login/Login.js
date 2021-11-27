@@ -1,10 +1,10 @@
 import React from 'react'
 import { Navigate, Route, Routes } from 'react-router'
-import LoginForm from './LoginForm'
-import LoginCreate from './LoginCreate'
-import styles from './Login.module.css'
+import LoginForm from '../User/Login/LoginForm'
+import LoginCreate from '../User/Login/LoginCreate'
+import styles from './styles/Login.module.css'
 import { UserContext } from '../../UserContext'
-import LoginCreateMedic from './Colaborador/LoginCreateMedic'
+import LoginCreateMedic from '../Medic/Login/LoginCreateMedic'
 
 
 const Login = () => {

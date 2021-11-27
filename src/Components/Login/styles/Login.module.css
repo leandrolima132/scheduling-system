@@ -8,7 +8,7 @@
 .login::before {
   display: block;
   content: "";
-  background: url("../../Assets/loginpatient.jpg") no-repeat center center;
+  background: url("../../../Assets/loginpatient.jpg") no-repeat center center;
 }
 
 .forms {
